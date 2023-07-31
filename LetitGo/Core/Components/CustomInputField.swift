@@ -26,8 +26,11 @@ struct CustomInputField: View {
                 
                 if isSecureField {
                     SecureField(placeholderText, text: $text)
+                        .accentColor(Color(hex: 0x8559DC))
                 } else {
                     TextField(placeholderText, text: $text)
+                        .autocapitalization(.none)
+                        .accentColor(Color(hex: 0x8559DC))
                 }
             }
             Divider()

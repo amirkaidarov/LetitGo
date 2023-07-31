@@ -11,8 +11,7 @@ import SwiftUI
 struct NewLetitView: View {
     @State private var caption : String = ""
     @Environment(\.presentationMode) var presentationMode
-//    @EnvironmentObject var authViewModel : AuthViewModel
-//    @ObservedObject var tweetViewModel = UploadTweetViewModel()
+    @ObservedObject var letitVM = NewLetitViewModel()
     
     var body: some View {
         VStack {
@@ -21,19 +20,19 @@ struct NewLetitView: View {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Cancel")
-                        .foregroundColor(Color(.systemBlue))
+                        .foregroundColor(Color(hex: 0x8559DC))
                 }
                 
                 Spacer()
                 
                 Button {
-//                    tweetViewModel.uploadTweet(withCaption:caption)
+                    letitVM.uploadLetit(withCaption:caption)
                 } label: {
-                    Text("Tweet")
+                    Text("Go")
                         .bold()
                         .padding(.vertical, 8)
                         .padding(.horizontal)
-                        .background(Color(.systemBlue))
+                        .background(Color(hex: 0x8559DC))
                         .foregroundColor(.white)
                         .clipShape(Capsule())
                 }
@@ -55,11 +54,11 @@ struct NewLetitView: View {
             }
             .padding()
         }
-//        .onReceive(tweetViewModel.$didUploadTweet) { isSuccessful in
-//            if isSuccessful {
-//                presentationMode.wrappedValue.dismiss()
-//            }
-//        }
+        .onReceive(letitVM.$didUploadLetit) { isSuccessful in
+            if isSuccessful {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
 

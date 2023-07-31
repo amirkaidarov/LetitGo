@@ -10,10 +10,9 @@ import SwiftUI
 struct RegistrationView: View {
     @State private var email : String = ""
     @State private var username : String = ""
-    @State private var fullname : String = ""
     @State private var password : String = ""
     
-//    @EnvironmentObject var viewModel : AuthViewModel
+    @EnvironmentObject var vm : AuthViewModel
     
     var body: some View {
         VStack {
@@ -36,12 +35,11 @@ struct RegistrationView: View {
             
             
             Button {
-//                viewModel.register(email: email,
-//                                   password: password,
-//                                   fullname: fullname,
-//                                   username: username)
+                vm.register(email: email,
+                            password: password,
+                            username: username)
             } label: {
-                Text("Sign in")
+                Text("Sign up")
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(width: 340, height: 50)
@@ -54,7 +52,7 @@ struct RegistrationView: View {
             Spacer()
             
             Button {
-//                viewModel.toggleIsLogin()
+                vm.toggleIsLogin()
             } label: {
                 HStack {
                     Text("Already have an account?")

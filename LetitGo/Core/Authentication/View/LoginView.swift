@@ -11,7 +11,7 @@ struct LoginView: View {
     
     @State private var email : String = ""
     @State private var password : String = ""
-//    @EnvironmentObject var viewModel : AuthViewModel
+    @EnvironmentObject var vm : AuthViewModel
     
     var body: some View {
         VStack {
@@ -45,7 +45,7 @@ struct LoginView: View {
             }
             
             Button {
-//                viewModel.login(withEmail: email, andPassword: password)
+                vm.login(withEmail: email, andPassword: password)
             } label: {
                 Text("Sign in")
                     .font(.headline)
@@ -62,9 +62,7 @@ struct LoginView: View {
             Spacer()
             
             Button {
-
-//                viewModel.toggleIsLogin()
-                
+                vm.toggleIsLogin()
             } label: {
                 HStack {
                     Text("Don't have an account?")
